@@ -213,6 +213,7 @@ if (myName) {
 
 // const calcAgeArrow = birthYear => {
 //   console.log(2037 - birthYear);
+// *  THis keyword here will be window object because this arrow function's parent function is the global function where it is a window obj, but if arrow function will be inside regular function then this=undefined,arrow function uses lexical this keyword, it takes parent's scope 
 //   console.log(this);
 // };
 // calcAgeArrow(1980);

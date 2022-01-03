@@ -1,5 +1,31 @@
 'use strict';
 
+// ! Arrays VS. Sets and Objects VS. Maps
+// ^ Arrays VS Sets
+// & Use Arrays when
+// *      we need ordered list of values(might contain duplicates)
+// *      we need to manipulate data
+
+// & use sets when
+// *      we need to work with unique values
+// *      high performance is really important
+// *      we need to remove duplicates from arrays
+
+// ^ Objects vs Maps
+// & use objects when
+// *      More "traditional" key/value store ("abused objects")
+// *      Easier to write and access values with . and []
+// *      we need to include functions(methods)
+// *      working with JSON(can convert to map)
+
+// & use maps when
+// *      Better performance
+// *      Keys can have any data type
+// *      Easy to iterate
+// *      Easy to compute size
+// *      you simply need to map key to values
+// *      we need keys that are not strings
+
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
   [weekdays[3]]: {
