@@ -13,7 +13,6 @@
 // *  This is only possible because of first-class functions
 // *  Function that returns new function
 
-
 ///////////////////////////////////////
 //! Default Parameters
 // const bookings = [];
@@ -108,6 +107,7 @@
 
 // ///////////////////////////////////////
 //! Functions Returning Functions
+
 // const greet = function (greeting) {
 //   return function (name) {
 //     console.log(`${greeting} ${name}`);
@@ -120,41 +120,42 @@
 
 // greet('Hello')('Jonas');
 
-// // Challenge
+//! Challenge
 // const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 
 // greetArr('Hi')('Jonas');
 
 // ///////////////////////////////////////
-// // The call and apply Methods
-// const lufthansa = {
-//   airline: 'Lufthansa',
-//   iataCode: 'LH',
-//   bookings: [],
-//   // book: function() {}
-//   book(flightNum, name) {
-//     console.log(
-//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-//     );
-//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-//   },
-// };
+// ! The call and apply Methods
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function() {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
 
-// lufthansa.book(239, 'Jonas Schmedtmann');
-// lufthansa.book(635, 'John Smith');
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
 
-// const eurowings = {
-//   airline: 'Eurowings',
-//   iataCode: 'EW',
-//   bookings: [],
-// };
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
 
-// const book = lufthansa.book;
+const book = lufthansa.book;
+//* Does NOT work
+// book(23, 'Sarah Williams');
 
-// // Does NOT work
-// // book(23, 'Sarah Williams');
-
-// // Call method
+//^  Call method
+// *  here we are telling JS that this keyword in the book function should point to the eurowings object and takes its values from their
 // book.call(eurowings, 23, 'Sarah Williams');
 // console.log(eurowings);
 
@@ -169,7 +170,8 @@
 
 // book.call(swiss, 583, 'Mary Cooper');
 
-// // Apply method
+//^  Apply method
+// *  apply method does exactly the same as the call method. the only difference is that apply doesn't receive a list of arguments after the this keyword,instead it is gonna take array of the arguments
 // const flightData = [583, 'George Cooper'];
 // book.apply(swiss, flightData);
 // console.log(swiss);
@@ -177,9 +179,11 @@
 // book.call(swiss, ...flightData);
 
 // ///////////////////////////////////////
-// // The bind Method
+//! The bind Method
+// * bind method also allows us to manually set the this keyword for any function call, the difference is that bind does not immediately call the function , instead it returns a new function where the this keyword is bound
 // // book.call(eurowings, 23, 'Sarah Williams');
 
+// * so writing book.bind it doesn't call the function it is just returns a new function where the this keyword will always be set to eurowings
 // const bookEW = book.bind(eurowings);
 // const bookLH = book.bind(lufthansa);
 // const bookLX = book.bind(swiss);
@@ -205,10 +209,11 @@
 //   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
 // // Partial application
-// const addTax = (rate, value) => value + value * rate;
+const addTax = (rate, value) => value + value * rate;
 // console.log(addTax(0.1, 200));
 
-// const addVAT = addTax.bind(null, 0.23);
+// *  this means that function where we are binding a value, doesn't have this keyword so we need to set it as a null
+const addVAT = addTax.bind(null, 0.23);
 // // addVAT = value => value + value * 0.23;
 
 // console.log(addVAT(100));
@@ -257,79 +262,76 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-/*
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    // Get answer
-    const answer = Number(
-      prompt(
-        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
-      )
-    );
-    console.log(answer);
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     // Get answer
+//     const answer = Number(
+//       prompt(
+//         `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//       )
+//     );
+//     console.log(answer);
 
-    // Register answer
-    typeof answer === 'number' &&
-      answer < this.answers.length &&
-      this.answers[answer]++;
+//     // Register answer
+//     typeof answer === 'number' &&
+//       answer < this.answers.length &&
+//       this.answers[answer]++;
 
-    this.displayResults();
-    this.displayResults('string');
-  },
+//     this.displayResults();
+//     this.displayResults('string');
+//   },
 
-  displayResults(type = 'array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    } else if (type === 'string') {
-      // Poll results are 13, 2, 4, 1
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-    }
-  },
-};
+//   displayResults(type = 'array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     } else if (type === 'string') {
+//       // Poll results are 13, 2, 4, 1
+//       console.log(`Poll results are ${this.answers.join(', ')}`);
+//     }
+//   },
+// };
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
-// [5, 2, 3]
-// [1, 5, 3, 9, 6, 1]
+// // [5, 2, 3]
+// // [1, 5, 3, 9, 6, 1]
 
+// ///////////////////////////////////////
+// // Immediately Invoked Function Expressions (IIFE)
+// const runOnce = function () {
+//   console.log('This will never run again');
+// };
+// runOnce();
 
-///////////////////////////////////////
-// Immediately Invoked Function Expressions (IIFE)
-const runOnce = function () {
-  console.log('This will never run again');
-};
-runOnce();
+// // IIFE
+// (function () {
+//   console.log('This will never run again');
+//   const isPrivate = 23;
+// })();
 
-// IIFE
-(function () {
-  console.log('This will never run again');
-  const isPrivate = 23;
-})();
+// // console.log(isPrivate);
 
-// console.log(isPrivate);
+// (() => console.log('This will ALSO never run again'))();
 
-(() => console.log('This will ALSO never run again'))();
+// {
+//   const isPrivate = 23;
+//   var notPrivate = 46;
+// }
+// // console.log(isPrivate);
+// console.log(notPrivate);
 
-{
-  const isPrivate = 23;
-  var notPrivate = 46;
-}
-// console.log(isPrivate);
-console.log(notPrivate);
-
-
-///////////////////////////////////////
-// Closures
+// ///////////////////////////////////////
+// ! Closures
 const secureBooking = function () {
   let passengerCount = 0;
 
@@ -341,56 +343,54 @@ const secureBooking = function () {
 
 const booker = secureBooking();
 
-booker();
-booker();
-booker();
+// booker();
+// booker();
+// booker();
 
-console.dir(booker);
+// console.dir(booker);
 
+// ///////////////////////////////////////
+// // More Closure Examples
+// // Example 1
+// let f;
 
-///////////////////////////////////////
-// More Closure Examples
-// Example 1
-let f;
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
 
-const g = function () {
-  const a = 23;
-  f = function () {
-    console.log(a * 2);
-  };
-};
+// const h = function () {
+//   const b = 777;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
 
-const h = function () {
-  const b = 777;
-  f = function () {
-    console.log(b * 2);
-  };
-};
+// g();
+// f();
+// console.dir(f);
 
-g();
-f();
-console.dir(f);
+// // Re-assigning f function
+// h();
+// f();
+// console.dir(f);
 
-// Re-assigning f function
-h();
-f();
-console.dir(f);
+// // Example 2
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
 
-// Example 2
-const boardPassengers = function (n, wait) {
-  const perGroup = n / 3;
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
+//   }, wait * 1000);
 
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups, each with ${perGroup} passengers`);
-  }, wait * 1000);
+//   console.log(`Will start boarding in ${wait} seconds`);
+// };
 
-  console.log(`Will start boarding in ${wait} seconds`);
-};
-
-const perGroup = 1000;
-boardPassengers(180, 3);
-*/
+// const perGroup = 1000;
+// boardPassengers(180, 3);
 
 ///////////////////////////////////////
 // Coding Challenge #2
