@@ -340,8 +340,21 @@ const secureBooking = function () {
     console.log(`${passengerCount} passengers`);
   };
 };
-
 const booker = secureBooking();
+
+// * so here booker function  somehow have access to passengerCount variable, and after secureBooking is finished it continues to get access to the previous variable.
+// ^ so closure makes a function remember all the variables that existed at the function's birthplace.so booker function remember's passengerCount variable by the time it was created.
+// ^ Any function always has access to the variable environment of the execution context in which the function was created.
+// * so in the case of booker, booker function was created in the execution context of secureBooking. so therefore the booker function will get access to the variable environment which contains passengerCount variable,so this is how function can read manipulate the passengerCount variable. so this is called closure
+
+// ^ so function always has access to the variable environment of the execution context in which it was created.even after that execution context is gone.
+
+// !  Closures Summary
+// ^ 1).  A closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone
+
+// ^ 2).  A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time
+
+// ^ 3).  A closure makes sure that function doesn't loose connection to variables that existed at the function's birth place  
 
 // booker();
 // booker();

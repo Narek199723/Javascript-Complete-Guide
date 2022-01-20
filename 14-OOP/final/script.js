@@ -1,6 +1,28 @@
 'use strict';
 
-/*
+// ! OOP,
+// ^ 1).  OOP Object-oriented programming (OOP) is a programming paradigm based on the concept of objects
+// ^ 2).  We use objects to model (describe) real-world or abstract features
+// ^ 3).  Objects may contain data (properties) and code (methods)  By using objects , we pack data and the corresponding behavior into one block
+// ^ 4).  In OOP, objects are self-contained pieces/blocks of code
+// ^ 5).  Objects are building blocks of applications, and interact with one another
+// ^ 6).  Interactions happen through a public interface (API): methods that the code outside of the object can access and use to communicate with the object
+// ^ 7).  OOP was developed with the goal of organizing code,to make it more flexible and easier to maintain(avoid "spaghetti codes")
+
+// ! The  4 fundamental OOP principles
+// ^ 1). Abstraction
+// *     Abstraction:Ignoring or hiding details that don't matter,allowing us to get an overview perspective of the thing we are          implementing, instead of messing with details that don't really matter to our implementation
+// *    so let's say we are implementing a phone for a user to use. without abstraction we could design our class to include everything that there is about the phone. also all the internal stuff verifying phone's temperature voltage vibration mode.but as a user interacting with a phone do we need all of this details ? . so we don't need all of that details . so in reality when we interact with a real phone , all of these details have been abstracted away from us as the user. all is left for us is just a simple phone , where we can interact with home button screen, etc.
+// *
+// *
+// *
+// ^ 2). Encapsulation
+// *      Encapsulation: Keeping properties and methods private inside the class, so they are not accessible from outside the class. Some methods can be exposed as a public interface (API)
+// *      Encapsulation prevents external code from accidentally manipulating internal properties/state
+// ^ 3). Inheritance
+// *  Inheritance: Making all properties and methods of a certain class available to a child class,forming a hierarchical relationship between classes. This allows us to reuse common logic and to mode real-world relationships
+// ^ 4). Polymorphism
+
 ///////////////////////////////////////
 // Constructor Functions and the new Operator
 const Person = function (firstName, birthYear) {
@@ -59,7 +81,6 @@ console.log(jonas.species, matilda.species);
 console.log(jonas.hasOwnProperty('firstName'));
 console.log(jonas.hasOwnProperty('species'));
 
-
 ///////////////////////////////////////
 // Prototypal Inheritance on Built-In Objects
 console.log(jonas.__proto__);
@@ -83,7 +104,6 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
-*/
 
 ///////////////////////////////////////
 // Coding Challenge #1
