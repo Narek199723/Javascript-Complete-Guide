@@ -1,4 +1,13 @@
 ///////////////////////////////////////
+
+// * Bundling - Join all modules into one file
+// * Transpiling/polyfilling - Convert modern JS back to ES5
+// *  JS bundlers - Webpack or Parcel - they take our code and transform it JS bundle
+
+// ^ Module - Reusable piece of code that encapsulates implementation details,
+// ^ Module is usually standalone file, but it doesn't have to be
+// ^ Compose software: Modules are small building blocks that we put together to build complex applications
+
 // Exporting and Importing in ES6 Modules
 
 // Importing module
@@ -25,14 +34,14 @@ console.log(cart);
 /*
 
 
-///////////////////////////////////////
-// Top-Level Await (ES2022)
+/////////////////////////////////////
+Top-Level Await (ES2022)
 
-// console.log('Start fetching');
-// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-// const data = await res.json();
-// console.log(data);
-// console.log('Something');
+console.log('Start fetching');
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await res.json();
+console.log(data);
+console.log('Something');
 
 const getLastPost = async function () {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -102,44 +111,44 @@ const { addTocart } = require('./shoppingCart.js');
 ///////////////////////////////////////
 // Introduction to NPM
 // import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
-import cloneDeep from 'lodash-es';
+// import cloneDeep from 'lodash-es';
 
-const state = {
-  cart: [
-    { product: 'bread', quantity: 5 },
-    { product: 'pizza', quantity: 5 },
-  ],
-  user: { loggedIn: true },
-};
-const stateClone = Object.assign({}, state);
-const stateDeepClone = cloneDeep(state);
+// const state = {
+//   cart: [
+//     { product: 'bread', quantity: 5 },
+//     { product: 'pizza', quantity: 5 },
+//   ],
+//   user: { loggedIn: true },
+// };
+// const stateClone = Object.assign({}, state);
+// const stateDeepClone = cloneDeep(state);
 
-state.user.loggedIn = false;
-console.log(stateClone);
+// state.user.loggedIn = false;
+// console.log(stateClone);
 
-console.log(stateDeepClone);
+// console.log(stateDeepClone);
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
-class Person {
-  #greeting = 'Hey';
-  constructor(name) {
-    this.name = name;
-    console.log(`${this.#greeting}, ${this.name}`);
-  }
-}
-const jonas = new Person('Jonas');
+// class Person {
+//   #greeting = 'Hey';
+//   constructor(name) {
+//     this.name = name;
+//     console.log(`${this.#greeting}, ${this.name}`);
+//   }
+// }
+// const jonas = new Person('Jonas');
 
-console.log('Jonas' ?? null);
+// console.log('Jonas' ?? null);
 
-console.log(cart.find(el => el.quantity >= 2));
-Promise.resolve('TEST').then(x => console.log(x));
+// console.log(cart.find(el => el.quantity >= 2));
+// Promise.resolve('TEST').then(x => console.log(x));
 
-import 'core-js/stable';
-// import 'core-js/stable/array/find';
-// import 'core-js/stable/promise';
+// import 'core-js/stable';
+// // import 'core-js/stable/array/find';
+// // import 'core-js/stable/promise';
 
-// Polifilling async functions
-import 'regenerator-runtime/runtime';
+// // Polifilling async functions
+// import 'regenerator-runtime/runtime';
