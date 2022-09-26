@@ -1,119 +1,163 @@
-/*
 ////////////////////////////////////
 // Linking a JavaScript File
-let js = "amazing";
-console.log(40 + 8 + 23 - 10);
+// let js = "amazing";
+// console.log(40 + 8 + 23 - 10);
 
 ////////////////////////////////////
 // Values and Variables
-console.log("Jonas");
-console.log(23);
+// console.log("Jonas");
+// console.log(23);
 
-let firstName = "Matilda";
+// let firstName = "Matilda";
 
-console.log(firstName);
-console.log(firstName);
-console.log(firstName);
+// console.log(firstName);
+// console.log(firstName);
+// console.log(firstName);
 
-// Variable name conventions
-let jonas_matilda = "JM";
-let $function = 27;
+// // Variable name conventions
+// let jonas_matilda = "JM";
+// let $function = 27;
 
-let person = "jonas";
-let PI = 3.1415;
+// let person = "jonas";
+// let PI = 3.1415;
 
-let myFirstJob = "Coder";
-let myCurrentJob = "Teacher";
+// let myFirstJob = "Coder";
+// let myCurrentJob = "Teacher";
 
-let job1 = "programmer";
-let job2 = "teacher";
+// let job1 = "programmer";
+// let job2 = "teacher";
 
-console.log(myFirstJob);
+// console.log(myFirstJob);
 
 ////////////////////////////////////
 // Data Types
-let javascriptIsFun = true;
-console.log(javascriptIsFun);
 
-// console.log(typeof true);
-console.log(typeof javascriptIsFun);
-// console.log(typeof 23);
-// console.log(typeof 'Jonas');
+//* Javascript types can be divided into two categories: primitive types and object types
+//* Any Js value that is not a number, a string, a boolean, a symbol, null or undefined is an object
+//* An object is a collection of properties where each property has a name and a value
+// let javascriptIsFun = true;
+// console.log(javascriptIsFun);
 
-javascriptIsFun = 'YES!';
-console.log(typeof javascriptIsFun);
+// // console.log(typeof true);
+// console.log(typeof javascriptIsFun);
+// // console.log(typeof 23);
+// // console.log(typeof 'Jonas');
 
-let year;
-console.log(year);
-console.log(typeof year);
+// javascriptIsFun = 'YES!';
+// console.log(typeof javascriptIsFun);
 
-year = 1991;
-console.log(typeof year);
+// let year;
+// console.log(year);
+// console.log(typeof year);
 
-console.log(typeof null);
+// year = 1991;
+// console.log(typeof year);
 
+// console.log(typeof null);
+
+//! Number
+// * Number is used to represent integers and to approximate real numbers. Javascript represents numbers using 64-bit floating point format,so it can represent numbers as large as +-1.7976931348623157*10**308 and as small as +-5*10**-324
+
+// * The Number type is a double-precision 64-bit binary format IEEE 754 value. It is capable of storing positive floating-point numbers between 2^-1074 (Number.MIN_VALUE) and 2^1024 (Number.MAX_VALUE) as well as negative floating-point numbers between -(2^-1074) and -(2^1024), but it can only safely store integers in the range -(2^53 − 1) (Number.MIN_SAFE_INTEGER) to 2^53 − 1 (Number.MAX_SAFE_INTEGER).
+
+let num = 5;
+let floatingNum = 0.23;
+
+// ! String
+// * String is representing text value
+let firstName = "John";
+let lastName = "Smith";
+let country = `Armenia`;
+
+// ! Boolean
+// * boolean represents a logical entity and can have two values: true and false
+let isJaneDrunk = true;
+let storyIsTold = false;
+
+//! null
+// * null is a language keyword that evaluates to a special value that is usually used to indicate the absence of a value
+
+const nonExistingNum = null;
+
+// ! BigInt
+// * The BigInt type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. With BigInts, you can safely store and operate on large integers even beyond the safe integer limit for Numbers.
+const greatNumber = BigInt(Number.MAX_SAFE_INTEGER);
+
+// ! undefined
+// * A variable that has not been assigned a value has the value undefined,the difference between null and undefined values is that undefined is thought to be missed or there is bug unexpected something, but in null we kind of expected that behavior
+
+let noExistingValue; //undefined
+let absentValue = undefined;
+
+// ! Symbols
+// * A Symbol is a unique and immutable primitive value and may be used as the key of an Object property (see below). In some programming languages, Symbols are called "atoms".
+// * symbol function never returns the same value twice,even when called with the same argument.This means that if you call Symbol() to obtain a symbol value , you can safely use that value as a property name to add a new property to an object and do not need to worry that you might be overwriting an existing property with the same name
+
+let strName = "string name";
+let symName = Symbol("propName");
+typeof strName;
+typeof symName;
 ////////////////////////////////////
 // let, const and var
-let age = 30;
-age = 31;
+// let age = 30;
+// age = 31;
 
-const birthYear = 1991;
-// birthYear = 1990;
-// const job;
+// const birthYear = 1991;
+// // birthYear = 1990;
+// // const job;
 
-var job = 'programmer';
-job = 'teacher'
+// var job = 'programmer';
+// job = 'teacher'
 
-lastName = 'Schmedtmann';
-console.log(lastName);
+// lastName = 'Schmedtmann';
+// console.log(lastName);
 
 ////////////////////////////////////
 // Basic Operators
 // Math operators
-const now = 2037;
-const ageJonas = now - 1991;
-const ageSarah = now - 2018;
-console.log(ageJonas, ageSarah);
+// const now = 2037;
+// const ageJonas = now - 1991;
+// const ageSarah = now - 2018;
+// console.log(ageJonas, ageSarah);
 
-console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
-// 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2
+// console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
+// // 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2
 
-const firstName = 'Jonas';
-const lastName = 'Schmedtmann';
-console.log(firstName + ' ' + lastName);
+// const firstName = 'Jonas';
+// const lastName = 'Schmedtmann';
+// console.log(firstName + ' ' + lastName);
 
 // Assignment operators
-let x = 10 + 5; // 15
-x += 10; // x = x + 10 = 25
-x *= 4; // x = x * 4 = 100
-x++; // x = x + 1
-x--;
-x--;
-console.log(x);
+// let x = 10 + 5; // 15
+// x += 10; // x = x + 10 = 25
+// x *= 4; // x = x * 4 = 100
+// x++; // x = x + 1
+// x--;
+// x--;
+// console.log(x);
 
 // Comparison operators
-console.log(ageJonas > ageSarah); // >, <, >=, <=
-console.log(ageSarah >= 18);
+// console.log(ageJonas > ageSarah); // >, <, >=, <=
+// console.log(ageSarah >= 18);
 
-const isFullAge = ageSarah >= 18;
+// const isFullAge = ageSarah >= 18;
 
-console.log(now - 1991 > now - 2018);
+// console.log(now - 1991 > now - 2018);
 
 ////////////////////////////////////
 // Operator Precedence
-const now = 2037;
-const ageJonas = now - 1991;
-const ageSarah = now - 2018;
+// const now = 2037;
+// const ageJonas = now - 1991;
+// const ageSarah = now - 2018;
 
-console.log(now - 1991 > now - 2018);
+// console.log(now - 1991 > now - 2018);
 
-let x, y;
-x = y = 25 - 10 - 5; // x = y = 10, x = 10
-console.log(x, y);
+// let x, y;
+// x = y = 25 - 10 - 5; // x = y = 10, x = 10
+// console.log(x, y);
 
-const averageAge = (ageJonas + ageSarah) / 2;
-console.log(ageJonas, ageSarah, averageAge);
-*/
+// const averageAge = (ageJonas + ageSarah) / 2;
+// console.log(ageJonas, ageSarah, averageAge);
 
 ////////////////////////////////////
 // Coding Challenge #1
