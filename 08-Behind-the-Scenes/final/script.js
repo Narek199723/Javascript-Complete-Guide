@@ -2,7 +2,7 @@
 
 // *  1). --  Javascript is a high-level,prototype-based  Object-oriented,multi-paradigm,interpreted or just-in-time-compiled,dynamic.single threaded,garbage-collected programming language with first-class functions and a non-blocking event loop concurrency model
 
-// *  2). -- High level - we have low level languages like c which every time need to ask the computer to create a memory for storing a variable , but with JS and also with Python we dont need that,so JS Python has some kind of abstractions which takes all that work, this makes language easier to learn , but the downside is that high level languages are never gonna be as fast as the low level languages,
+// *  2). -- High level - we have low level languages like c which every time need to ask the computer to create a memory for storing a variable , but with JS and also with Python we don't need that,so JS Python has some kind of abstractions which takes all that work, this makes language easier to learn , but the downside is that high level languages are never gonna be as fast as the low level languages,
 
 // *  3). --  one of the powerful tools that takes memory management away from us developers is the garbage collection, which is an algorithm inside the JS engine which automatically removes old unused objects from the computer memory
 
@@ -213,7 +213,7 @@ if (myName) {
 
 // const calcAgeArrow = birthYear => {
 //   console.log(2037 - birthYear);
-// *  THis keyword here will be window object because this arrow function's parent function is the global function where it is a window obj, but if arrow function will be inside regular function then this=undefined,arrow function uses lexical this keyword, it takes parent's scope 
+// *  THis keyword here will be window object because this arrow function's parent function is the global function where it is a window obj, but if arrow function will be inside regular function then this=undefined,arrow function uses lexical this keyword, it takes parent's scope
 //   console.log(this);
 // };
 // calcAgeArrow(1980);
